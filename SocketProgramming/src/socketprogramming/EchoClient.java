@@ -33,6 +33,8 @@ package socketprogramming;
 
 import java.io.*;
 import java.net.*;
+import spatialinformationsender.SpatialPoint;
+
 
 public class EchoClient {
     public static void main(String[] args) throws IOException {
@@ -61,11 +63,27 @@ public class EchoClient {
                 new BufferedReader(
                     new InputStreamReader(System.in))
         ) {
+            /*
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
                 out.println(userInput);
                 System.out.println("echo: " + in.readLine());
-            }
+            */
+            
+		//System.out.println("************************************");
+            
+		for (int i=0;i<200;i++) {
+                    SpatialPoint spatialPoint = new SpatialPoint();
+			spatialPoint = spatialPoint.randomSpatialPoint();
+			//System.out.print(spatialPoint.toXML());
+                        String strXML = spatialPoint.toXML();
+			//System.out.println();
+                        out.println(strXML);
+		}
+                
+            
+            
+            
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);
             System.exit(1);
