@@ -86,3 +86,27 @@ public class SpatialPoint {
 	
 }
 
+class PointTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SpatialPoint spatialPoint = new SpatialPoint();
+		System.out.println("************************************");
+		
+		for (int i=0;i<200;i++) {
+			spatialPoint = spatialPoint.randomSpatialPoint();
+			System.out.print(spatialPoint.toXML());
+			System.out.println();
+		}
+		
+		
+		
+
+	}
+
+}
+
