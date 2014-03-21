@@ -34,6 +34,7 @@ package socketprogramming;
 import java.io.*;
 import java.net.*;
 import spatialinformationsender.SpatialPoint;
+//import spatialinformationsender.*;
 
 
 public class EchoClient {
