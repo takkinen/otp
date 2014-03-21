@@ -17,7 +17,7 @@ public class IncrementTest {
         System.out.println(a);
         System.out.println(b);
         int c = 0;
-        int d = ++c: // b = 1; a = 1
+        int d = ++c; // b = 1; a = 1
         System.out.println(c);
         System.out.println(d);
         
