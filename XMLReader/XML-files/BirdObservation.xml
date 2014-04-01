@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<birdobservation>
+    <date>2014-04-01</date>
+    <time>10:33:15</time>
+    <latitudeE6>60170833</latitudeE6>
+    <longitudeE6>249375</longitudeE6>
+    <species>crow</species>
+    <observerID>622589</observerID>
+</birdobservation>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<birdobservation>
+    <date>2014-04-01</date>
+    <time>10:32:15</time>
+    <latitudeE6>60174833</latitudeE6>
+    <longitudeE6>249375</longitudeE6>
+    <species>blackcrow</species>
+    <observerID>627589</observerID>
+</birdobservation>
