@@ -46,7 +46,7 @@ public class EchoServer {
         */
         
         //int portNumber = Integer.parseInt(args[0]);
-        int portNumber = 6543;
+        int portNumber = 6541;
         
         try (
             ServerSocket serverSocket =

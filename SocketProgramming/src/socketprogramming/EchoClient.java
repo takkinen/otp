@@ -51,7 +51,7 @@ public class EchoClient {
         String hostName = "localhost";
         
         //int portNumber = Integer.parseInt(args[1]);
-        int portNumber = 6543;
+        int portNumber = 6541;
 
         try (
             Socket echoSocket = new Socket(hostName, portNumber);
