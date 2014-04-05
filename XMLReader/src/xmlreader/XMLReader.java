@@ -114,6 +114,8 @@ public class XMLReader {
         String currentTagContent = "";
 
         while (xmlStreamReader.hasNext()) {
+            System.out.println("1");
+            
             int event = xmlStreamReader.next();
 
             if (event == XMLStreamConstants.START_DOCUMENT) {

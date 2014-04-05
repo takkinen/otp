@@ -40,4 +40,28 @@ public class BirdObservation {
                 + longitudeE6 + "\n"
                 + species + "\n";
     } // toString()
+
+    public int getObserverID() {
+        return observerID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public int getLatitudeE6() {
+        return latitudeE6;
+    }
+
+    public int getLongitudeE6() {
+        return longitudeE6;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
 } // class BirdObservation
