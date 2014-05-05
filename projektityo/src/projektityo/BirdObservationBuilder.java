@@ -12,7 +12,28 @@ package projektityo;
  */
 public class BirdObservationBuilder {
     
+    private int latit;
+    private int longit;
+    
     public BirdObservationBuilder() {}
+    
+    public void setCurrentGeoPoint(int latit, int longit) {
+        
+    }
+    
+    public GeoPoint getCurrentGeoPoint() {
+        // Get coordinates
+        
+        int latit = 24965714;
+        int longit = 64812394;
+        try {
+        GeoPoint gp = new GeoPoint(latit, longit);
+        return gp;
+        } catch (Exception ex) {
+            System.err.println(ex.toString());
+        }
+        return null;
+    }
     
     
     
