@@ -6,19 +6,58 @@
 
 package projektityo;
 
+import java.sql.Date;
+import java.sql.Time;
+
 /**
  *
  * @author henri
  */
 public class BirdObservationBuilder {
     
-    private int latit;
-    private int longit;
+    private GeoPoint geoPoint;
+    private int observerID = 0000000000;
+    private String species;
+    private Date date;
+    private Time time;
+    DataHandler dataHandler;
     
     public BirdObservationBuilder() {}
     
-    public void setCurrentGeoPoint(int latit, int longit) {
-        
+    public void defineCurrentGeoPoint() {
+        //
+    }
+    
+    public void setCurrentObserverID(int id) {
+        observerID = id;
+    }
+    
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+    
+    public void setCurrentDate() {
+        date = new Date(System.currentTimeMillis());
+    }
+    
+    public void setCurrentTime() {
+        time = new Time(System.currentTimeMillis());
+    }
+    
+    public void createBirdObservation() {
+        if (geoPoint == null) { return; }
+        if (observerID == 0) { return; }
+        if (date == null) { return; }
+        if (time == null) { return; }
+        if (species.length() > 0) {
+            BirdObservation birdObservation = new BirdObservation(observerID, date, time, geoPoint, species);
+            
+        }
+    }
+    
+    
+    public int getCurrentObserverID() {
+        return observerID;
     }
     
     public GeoPoint getCurrentGeoPoint() {
@@ -34,6 +73,8 @@ public class BirdObservationBuilder {
         }
         return null;
     }
+    
+    
     
     
     
