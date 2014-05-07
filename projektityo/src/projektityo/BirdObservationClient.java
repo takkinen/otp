@@ -220,9 +220,10 @@ public class BirdObservationClient extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //System.out.println("Send pressed.");
         BirdObservationBuilder bob = new BirdObservationBuilder();
         bob.defineCurrentGeoPoint();
-        bob.setCurrentObserverID(dataHandler.getObservatorID());
+        bob.setCurrentObserverID(DataHandler.getObservatorID());
         bob.setCurrentDate();
         bob.setCurrentTime();
         bob.setSpecies(jTextField1.getText());

@@ -26,6 +26,7 @@ public class BirdObservationBuilder {
     
     public void defineCurrentGeoPoint() {
         //
+        geoPoint = DataHandler.getGeoPoint();
     }
     
     public void setCurrentObserverID(int id) {
@@ -46,11 +47,13 @@ public class BirdObservationBuilder {
     
     public void createBirdObservation() {
         if (geoPoint == null) { return; }
-        if (observerID == 0) { return; }
+        if (observerID <= 0) { return; }
         if (date == null) { return; }
         if (time == null) { return; }
         if (species.length() > 0) {
             BirdObservation birdObservation = new BirdObservation(observerID, date, time, geoPoint, species);
+            BirdObservationSender.sendBirdObservation(birdObservation);
+            System.out.println(birdObservation.toXML());
             
         }
     }
