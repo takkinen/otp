@@ -21,7 +21,7 @@ public class BirdObservation {
     //private final int latitudeE6;  // <latitudeE6>60.170833</latitudeE6>
     //private final int longitudeE6; // <longitudeE6>24.9375</longitudeE6>
     GeoPoint geoPoint;
-    private final String species; // toteutetaan tietokantaa hyväksi käyttäen.
+    private final String species; 
 
     public BirdObservation(int anObserverID, Date aDate, Time aTime, GeoPoint aGeoPoint, String aSpecies) {
         observerID = anObserverID;
@@ -64,6 +64,7 @@ public class BirdObservation {
         String result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n" + 
         "<birdobservation> \n" +
         "   <date>" + getDate() + "</date> \n" +
+        "   <time>" + getTime() + "</time> \n" +
         "   <latitudeE6>" + getGeoPoint().getLatitudeE6() + "</latitudeE6> \n" +
         "   <longitudeE6>" + getGeoPoint().getLongitudeE6() + "</longitudeE6> \n" +
         "   <species>" + getSpecies() + "</species> \n" +

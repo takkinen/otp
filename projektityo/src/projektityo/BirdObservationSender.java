@@ -15,6 +15,7 @@ import java.io.*;
  * @author henri
  */
 public class BirdObservationSender {
+    public static int SOCKET = 7890;
     
     public static void sendBirdObservation(BirdObservation bo) {
         try (Socket socket = new Socket("localhost", 7890)) {
