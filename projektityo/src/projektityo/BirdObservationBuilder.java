@@ -58,7 +58,7 @@ public class BirdObservationBuilder {
         }
     }
     
-    
+    /*
     public int getCurrentObserverID() {
         return observerID;
     }
@@ -76,6 +76,7 @@ public class BirdObservationBuilder {
         }
         return null;
     }
+    */
     
     
     

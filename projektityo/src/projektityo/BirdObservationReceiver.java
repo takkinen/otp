@@ -25,7 +25,7 @@ public class BirdObservationReceiver {
     private static ServerSocket serverSocket;
 
     public static void main(String[] args) {
-        System.out.println("BirdObservationReceiver:");
+        System.out.println("BirdObservationReceiver:\n");
         SERVICE_ON = true;
 
         try {
