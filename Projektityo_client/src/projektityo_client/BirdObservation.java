@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package projektityo;
+package projektityo_client;
 
 import java.sql.Date;
 import java.sql.Time;

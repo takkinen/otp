@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package projektityo;
+package projektityo_client;
 
 import java.io.IOException;
 import java.net.Socket;
