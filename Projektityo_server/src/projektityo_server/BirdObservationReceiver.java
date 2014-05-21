@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class BirdObservationReceiver {
 
     private static final int SERVER_SOCKET = 7890;
-    private static final int SHUTDOWN_SOCKET = 53947;
+    //private static final int SHUTDOWN_SOCKET = 53947;
     private static boolean SERVICE_ON;
     private static Socket socketData;
     private static Socket socketAdmin;
@@ -68,7 +68,7 @@ public class BirdObservationReceiver {
                     // XMLBuilder-toiminnallisuus
 
                 }
-                xmlBuilder.xmlRecordReady();
+                //xmlBuilder.xmlRecordReady();
 
                 //System.out.println("-2-");
             } catch (IOException ex) {
