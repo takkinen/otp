@@ -45,6 +45,8 @@ public class BirdObservationBuilder {
         time = new Time(System.currentTimeMillis());
     }
     
+    
+    
     public void createBirdObservation() {
         if (geoPoint == null) { return; }
         if (observerID <= 0) { return; }
@@ -77,6 +79,14 @@ public class BirdObservationBuilder {
         return null;
     }
     */
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
     
     
     
