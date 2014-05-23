@@ -12,23 +12,43 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.stream.XMLStreamException;
 
 /**
  *
  * @author henri
  */
-public class BirdObservationReceiver {
+public class BirdObservationReceiver implements Runnable {
 
     private static final int SERVER_SOCKET = 7890;
-    //private static final int SHUTDOWN_SOCKET = 53947;
     private static boolean SERVICE_ON;
     private static Socket socketData;
-    private static Socket socketAdmin;
+    //private static Socket socketAdmin;
     private static ServerSocket serverSocketXML;
-    private static ServerSocket serverSocketShutDown;
+    //private static ServerSocket serverSocketShutDown;
     private static final String STOP_SERVICE = "shutdownnow";
+    private String message; 
 
-    public static void main(String[] args) {
+    public static void setSERVICE_ON(boolean aSERVICE_ON) {
+        SERVICE_ON = aSERVICE_ON;
+    }
+    
+    private void stopReceiving() {
+        
+        try {
+            socketData.close();
+            //socketAdmin.close();
+            serverSocketXML.close();
+            //serverSocketShutDown.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(BirdObservationReceiver.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void run() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         System.out.println("BirdObservationReceiver:\n");
         SERVICE_ON = true;
         XMLBuilder xmlBuilder = new XMLBuilder();
@@ -60,59 +80,30 @@ public class BirdObservationReceiver {
 
                 while ((string = in.readLine()) != null) {
                     if (string.equals(STOP_SERVICE)) {
+                        stopReceiving();
                         SERVICE_ON = false;
                     }
                     message += string; // lisätään luettu rivi ko. viestiin
                     System.out.println(string);
-                    xmlBuilder.addString(string);
+                    
                     // XMLBuilder-toiminnallisuus
 
                 }
+                xmlBuilder.addString(message);
                 //xmlBuilder.xmlRecordReady();
 
                 //System.out.println("-2-");
             } catch (IOException ex) {
                 Logger.getLogger(BirdObservationReceiver.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (XMLStreamException ex) {
+                Logger.getLogger(BirdObservationReceiver.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(BirdObservationReceiver.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            // tarkistetaan, ettei tarvitse sammuttaa palvelua
-            /*
-             try {
-             socketAdmin = serverSocketShutDown.accept();
-             System.out.println("-1-");
-             BufferedReader in = new BufferedReader(new InputStreamReader(socketAdmin.getInputStream()));
-             String string;
-             while ((string = in.readLine()) != null) {
-             System.out.println(string);
-             if (string.equals(STOP_SERVICE)) {
-             SERVICE_ON = false;
-             }
-
-             }
-             } catch (IOException ex) {
-             Logger.getLogger(BirdObservationReceiver.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             */
+            
         }
+
     }
+    
+    
 }
-
-/*
- ServerSocket server = new ServerSocket(port);
- while (true) {
- try (Socket connection = server.accept()) {
- Writer out = new OutputStreamWriter(connection.getOutputStream());
- Date now = new Date();
- out.write(now.toString() +"\r\n");
- out.flush();
- } catch (IOException ex) {
- // problem with one client; don't shut down the server
- Using ServerSockets
- www.it-ebooks.info
- |
- 285
- System.err.println(ex.getMessage());
- }
- }
-
- */

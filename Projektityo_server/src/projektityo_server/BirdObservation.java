@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projektityo_server;
 
 import java.sql.Date;
@@ -18,16 +17,28 @@ public class BirdObservation {
     private final int observerID; // <observerID></observerID>
     private final Date date; // <date>2014-04-01</date>
     private final Time time; // <date>2014-04-01</date>
-    //private final int latitudeE6;  // <latitudeE6>60.170833</latitudeE6>
-    //private final int longitudeE6; // <longitudeE6>24.9375</longitudeE6>
+    private final int latitudeE6;  // <latitudeE6>60.170833</latitudeE6>
+    private final int longitudeE6; // <longitudeE6>24.9375</longitudeE6>
     GeoPoint geoPoint;
-    private final String species; 
+    private final String species;
 
     public BirdObservation(int anObserverID, Date aDate, Time aTime, GeoPoint aGeoPoint, String aSpecies) {
         observerID = anObserverID;
         date = aDate;
         time = aTime;
+        latitudeE6 = aGeoPoint.getLatitudeE6();
+        longitudeE6 = aGeoPoint.getLongitudeE6();
         geoPoint = aGeoPoint;
+        species = aSpecies;
+    }
+    
+    public BirdObservation(int anObserverID, Date aDate, Time aTime, int latitude, int longitude, String aSpecies) throws Exception {
+        observerID = anObserverID;
+        date = aDate;
+        time = aTime;
+        latitudeE6 = latitude;
+        longitudeE6 = longitude;
+        geoPoint = new GeoPoint(latitude, longitude); 
         species = aSpecies;
     }
 
@@ -59,19 +70,19 @@ public class BirdObservation {
     public String getSpecies() {
         return species;
     }
-    
+
     public String toXML() {
-        String result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n" + 
-        "<birdobservation> \n" +
-        "   <date>" + getDate() + "</date> \n" +
-        "   <time>" + getTime() + "</time> \n" +
-        "   <latitudeE6>" + getGeoPoint().getLatitudeE6() + "</latitudeE6> \n" +
-        "   <longitudeE6>" + getGeoPoint().getLongitudeE6() + "</longitudeE6> \n" +
-        "   <species>" + getSpecies() + "</species> \n" +
-        "   <observerID>" + getObserverID() + "</observerID> \n" +
-        "</birdobservation> \n\n" ;
-        
+        String result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n"
+                + "<birdobservation> \n"
+                + "   <date>" + getDate() + "</date> \n"
+                + "   <time>" + getTime() + "</time> \n"
+                + "   <latitudeE6>" + getGeoPoint().getLatitudeE6() + "</latitudeE6> \n"
+                + "   <longitudeE6>" + getGeoPoint().getLongitudeE6() + "</longitudeE6> \n"
+                + "   <species>" + getSpecies() + "</species> \n"
+                + "   <observerID>" + getObserverID() + "</observerID> \n"
+                + "</birdobservation> \n\n";
+
         return result;
     }
-    
+
 } // class BirdObservation
