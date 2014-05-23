@@ -40,10 +40,12 @@ public class BirdObservationBuilder {
     
     public void setCurrentDate() {
         date = new Date(System.currentTimeMillis());
+        
     }
     
     public void setCurrentTime() {
         time = new Time(System.currentTimeMillis());
+        System.out.println(time.toString());
     }
     
     
