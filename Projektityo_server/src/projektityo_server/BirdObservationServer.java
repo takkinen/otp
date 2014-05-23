@@ -36,6 +36,7 @@ public class BirdObservationServer extends javax.swing.JFrame {
         StopButton = new javax.swing.JButton();
         CloseButton = new javax.swing.JButton();
         notesJLabel = new javax.swing.JLabel();
+        BrowseDB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,13 @@ public class BirdObservationServer extends javax.swing.JFrame {
             }
         });
 
+        BrowseDB.setText("BrowseDB");
+        BrowseDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BrowseDBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,7 +86,10 @@ public class BirdObservationServer extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CloseButton)
                                 .addGap(0, 300, Short.MAX_VALUE))
-                            .addComponent(notesJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(notesJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BrowseDB)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -91,8 +102,10 @@ public class BirdObservationServer extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(CloseButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(notesJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(notesJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BrowseDB))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -122,6 +135,12 @@ public class BirdObservationServer extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(EXIT_ON_CLOSE);
     }//GEN-LAST:event_CloseButtonActionPerformed
+
+    private void BrowseDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrowseDBActionPerformed
+        // TODO add your handling code here:
+        DatabaseBrowser dbb = new DatabaseBrowser();
+        dbb.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_BrowseDBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +179,7 @@ public class BirdObservationServer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BrowseDB;
     private javax.swing.JButton CloseButton;
     private javax.swing.JButton StartButton;
     private javax.swing.JButton StopButton;

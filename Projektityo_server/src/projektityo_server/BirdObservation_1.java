@@ -6,8 +6,14 @@
 
 package projektityo_server;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+
 import java.util.Date;
+import java.sql.Time;
+//import java.util.Time;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +25,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -38,6 +45,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BirdObservation_1.findBySpecies", query = "SELECT b FROM BirdObservation_1 b WHERE b.species = :species"),
     @NamedQuery(name = "BirdObservation_1.findByObserverId", query = "SELECT b FROM BirdObservation_1 b WHERE b.observerId = :observerId")})
 public class BirdObservation_1 implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,7 +96,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public Date getDate() {
@@ -95,7 +106,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setDate(Date date) {
+        Date oldDate = this.date;
         this.date = date;
+        changeSupport.firePropertyChange("date", oldDate, date);
     }
 
     public Date getTime() {
@@ -103,7 +116,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setTime(Date time) {
+        Date oldTime = this.time;
         this.time = time;
+        changeSupport.firePropertyChange("time", oldTime, time);
     }
 
     public int getLatitudeE6() {
@@ -111,7 +126,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setLatitudeE6(int latitudeE6) {
+        int oldLatitudeE6 = this.latitudeE6;
         this.latitudeE6 = latitudeE6;
+        changeSupport.firePropertyChange("latitudeE6", oldLatitudeE6, latitudeE6);
     }
 
     public int getLongitudeE6() {
@@ -119,7 +136,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setLongitudeE6(int longitudeE6) {
+        int oldLongitudeE6 = this.longitudeE6;
         this.longitudeE6 = longitudeE6;
+        changeSupport.firePropertyChange("longitudeE6", oldLongitudeE6, longitudeE6);
     }
 
     public String getSpecies() {
@@ -127,7 +146,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setSpecies(String species) {
+        String oldSpecies = this.species;
         this.species = species;
+        changeSupport.firePropertyChange("species", oldSpecies, species);
     }
 
     public int getObserverId() {
@@ -135,7 +156,9 @@ public class BirdObservation_1 implements Serializable {
     }
 
     public void setObserverId(int observerId) {
+        int oldObserverId = this.observerId;
         this.observerId = observerId;
+        changeSupport.firePropertyChange("observerId", oldObserverId, observerId);
     }
 
     @Override
@@ -161,6 +184,14 @@ public class BirdObservation_1 implements Serializable {
     @Override
     public String toString() {
         return "projektityo_server.BirdObservation_1[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }
