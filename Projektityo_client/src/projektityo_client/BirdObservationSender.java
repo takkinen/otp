@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projektityo_client;
 
 import java.io.IOException;
@@ -15,21 +14,30 @@ import java.io.*;
  * @author henri
  */
 public class BirdObservationSender {
+
     public static int SOCKET = 7890;
-    
-    public static void sendBirdObservation(BirdObservation bo) {
-        try (Socket socket = new Socket("localhost", 7890)) {
-            Writer out = new OutputStreamWriter(
-            socket.getOutputStream(), "UTF-8");
-            out.write(bo.toXML());
-            out.flush();
-            socket.shutdownOutput();
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
-        }
-                
+
+    public static void sendBirdObservation(BirdObservation bo) throws IOException {
+        Socket socket = new Socket("localhost", 7890);
+        Writer out = new OutputStreamWriter(
+                socket.getOutputStream(), "UTF-8");
+        out.write(bo.toXML());
+        out.flush();
+        socket.shutdownOutput();
+        /*
+         try (Socket socket = new Socket("localhost", 7890)) {
+         Writer out = new OutputStreamWriter(
+         socket.getOutputStream(), "UTF-8");
+         out.write(bo.toXML());
+         out.flush();
+         socket.shutdownOutput();
+         } catch (IOException ioex) {
+         ioex.printStackTrace();
+         }
+         */
+
     }
-    
+
 }
 
 

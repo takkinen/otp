@@ -6,6 +6,9 @@
 package projektityo_client;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -267,11 +270,18 @@ public class BirdObservationClient extends javax.swing.JFrame {
         bob.setCurrentDate();
         bob.setCurrentTime();
         bob.setSpecies(jTextField1.getText());
-        bob.createBirdObservation();
-        jLabel3.setText(
+        try {
+            bob.createBirdObservation();
+            jLabel3.setText(
                 "Sent: <" + jTextField1.getText() + "> at " + bob.getDate() +
                         "  " + bob.getTime());
-        jTextField1.setText("");
+            jTextField1.setText("");
+        } catch (IOException ex) {
+            jLabel3.setText(ex.getMessage());
+            //Logger.getLogger(BirdObservationClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
 
     }
 

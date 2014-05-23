@@ -6,6 +6,7 @@
 
 package projektityo_client;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -47,7 +48,7 @@ public class BirdObservationBuilder {
     
     
     
-    public void createBirdObservation() {
+    public void createBirdObservation() throws IOException {
         if (geoPoint == null) { return; }
         if (observerID <= 0) { return; }
         if (date == null) { return; }
